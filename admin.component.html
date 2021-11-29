@@ -1,0 +1,16 @@
+<app-navbar></app-navbar>
+<app-sidebar [(menu)]="menu" [ngClass]="{'active':menu}"></app-sidebar>
+<div class="close-sidebar" (click)="actionMenu()"></div>
+
+<div class="panel">
+    <div class="location-bar">
+        <div class="action a-active" [ngClass]="{'active':menu}" (click)="actionMenu()">
+            <i class="menu fas fa-bars"></i>
+            <i class="close fas fa-times"></i>
+        </div>
+        {{router.url.replace('/','')}}
+    </div>
+    <div class="content">
+        <router-outlet></router-outlet>
+    </div>
+</div>

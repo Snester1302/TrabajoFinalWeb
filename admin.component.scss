@@ -1,0 +1,89 @@
+@use "/src/assets/scss/color.scss";
+
+:host {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: 4rem 1fr;
+  grid-template-areas: "navbar navbar" "sidebar panel";
+  position: fixed;
+  width: 100%;
+  height: 100%;
+
+  > app-navbar {
+    grid-column: 1/-1;
+    grid-area: navbar;
+    position: sticky;
+    top: 0;
+  }
+  > app-sidebar {
+    grid-area: sidebar;
+  }
+  > .panel {
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 100%;
+    display: grid;
+    grid-area: panel;
+    grid-template-rows: auto 1fr;
+    > .location-bar {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      display: grid;
+      align-items: center;
+      grid-template-columns: auto 1fr;
+      gap: 1rem;
+      background: color.$lb-bg;
+      color: color.$lb-ft;
+      font-weight: 500;
+      padding: 0 1rem;
+      height: 2rem;
+      // box-shadow: 0 0 0.5rem #000;
+
+      > .action {
+        width: 1rem;
+        display: flex;
+        justify-content: center;
+        cursor: pointer;
+
+        > .menu {
+          display: block;
+        }
+        > .close {
+          display: none;
+        }
+      }
+
+      > .active {
+        > .menu {
+          display: none;
+        }
+        > .close {
+          display: block;
+        }
+      }
+    }
+    > .content {
+      height: 100%;
+      padding: 1rem;
+      background: color.$content-bg;
+    }
+  }
+  > .close-sidebar {
+    display: none;
+  }
+}
+
+@media (max-width: 650px) {
+  :host {
+    > app-sidebar.active ~ .close-sidebar {
+      display: block;
+      position: fixed;
+      height: calc(100% - 6rem);
+      top: 6rem;
+      width: 100%;
+      background-color: #00000044;
+      z-index: 1;
+    }
+  }
+}
