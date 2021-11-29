@@ -1,0 +1,79 @@
+<form *ngIf="active=='begin'" class="form" [formGroup]="formGroup" novalidate>
+    <div class="title">Registra tu Cita</div>
+    <e-input desc="Cita para" formControlName="para" aria-disabled="true"></e-input>
+    <e-select desc="Especialidad" formControlName="id_especialidad" [data]="_especialidades" key="id" display="nombre"
+        [default]="0">
+    </e-select>
+    <e-select desc="Sucursal" formControlName="id_sucursal" [data]="_sucursales" key="id" display="nombre"
+        [default]="0">
+    </e-select>
+    <div class="actions-r">
+        <e-button type="button" [enable]="beginValid" desc="Siguiente" (click)="loadPagination()"></e-button>
+    </div>
+</form>
+
+<div *ngIf="active=='filter'" class="form" [formGroup]="formGroup" novalidate>
+    <div class="title">Registra tu Cita</div>
+    <div class="filter">
+        <e-input type="date" formControlName="fecha" desc="fecha" (ngModelChange)="loadPagination()"></e-input>
+        <e-select desc="Especialidad" formControlName="id_especialidad" [data]="_especialidades" key="id"
+            display="nombre" [default]="0" (ngModelChange)="loadPagination()">
+        </e-select>
+
+        <e-select desc="Sucursal" formControlName="id_sucursal" [data]="_sucursales" key="id" display="nombre"
+            [default]="0" (ngModelChange)="loadPagination()">
+        </e-select>
+    </div>
+    <table>
+        <tbody>
+            <tr *ngFor="let item of _pagination.content">
+                <td>
+                    <div class="especialista">
+                        <h3>{{item.nombres + ' '+item.apellidos}}</h3>
+                        <h4>{{item.especialidad}}</h4>
+                        <h5>{{item.sucursal}}</h5>
+                    </div>
+                </td>
+                <td>
+                    <div class="no-disponible" *ngIf="item.horarios.length==0">
+                        <div class="messaje">
+                            Sin horario disponible
+                        </div>
+                    </div>
+                    <div class="horarios" *ngIf="item.horarios.length>0">
+                        <div *ngFor="let horario of item.horarios" class="horario" (click)="finish(item,horario)">
+                            {{horario.inicio+' - '+horario.fin}}</div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <epagination [totalPages]="_pagination.totalPages" [currentPage]="_pagination.currentPage"
+        (pageChange)="loadPagination($event)"></epagination>
+    <div class="actions-l">
+        <e-button desc="Atras" (click)="active='begin'"></e-button>
+    </div>
+</div>
+
+
+<form *ngIf="active=='finish'" class="form" [formGroup]="formGroup" novalidate>
+    <div class="title">Registra tu Cita</div>
+    <div class="finish">
+        <h3>Para</h3>
+        <p>{{tokenService.getUsuario()!.nombres+ ', '+tokenService.getUsuario()!.apellidos }}</p>
+        <h3>Sucursal</h3>
+        <p>{{_especialista.sucursal}}</p>
+        <h3>Especialidad</h3>
+        <p>{{_especialista.especialidad}}</p>
+        <h3>Especialista</h3>
+        <p>{{_especialista.nombres + ' '+_especialista.apellidos}}</p>
+        <h3>Fecha</h3>
+        <p>{{formGroup.controls['fecha'].value}}</p>
+        <h3>Turno</h3>
+        <p>{{_horario.inicio+' - '+_horario.fin}}</p>
+    </div>
+    <div class="actions">
+        <e-button desc="Registrar Cita" (click)="save()"></e-button>
+        <e-button routerLink="/admin/cita" desc="Cancelar"></e-button>
+    </div>
+</form>
