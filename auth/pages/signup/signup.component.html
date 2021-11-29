@@ -1,0 +1,19 @@
+<form *ngIf="formGroup" [formGroup]="formGroup" novalidate>
+    <h1>Registrate</h1>
+    <i></i>
+    <e-input formControlName="nombres" desc="Nombres"></e-input>
+    <e-input formControlName="apellidos" desc="Apellidos"></e-input>
+    <e-input formControlName="email" desc="E-mail"></e-input>
+    <e-select formControlName="id_tipo_documento" desc="Documento"
+        [data]="[{id:1,desc:'DNI'},{id:2,desc:'CARNET DE EXTRANJERIA'}]" key="id" display="desc">
+    </e-select>
+    <e-input formControlName="nro_documento" desc="Nro Documento"></e-input>
+    <e-input formControlName="contrasena" type="password" desc="Contraseña"></e-input>
+    <e-input formControlName="confirm_contrasena" type="password" desc="Confirmar Contraseña"></e-input>
+    <echeck formControlName="terminos01" desc="Acepto los terminos y condiciones"></echeck>
+    <echeck formControlName="terminos02" desc="Acepto la politica de privacidad"></echeck>
+    <i></i>
+    <e-button
+        [enable]="formGroup.valid && formGroup.controls['contrasena'].value==formGroup.controls['confirm_contrasena'].value "
+        desc=" Registrate" (click)="signup()"></e-button>
+</form>
