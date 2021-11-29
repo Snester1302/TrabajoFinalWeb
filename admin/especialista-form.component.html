@@ -1,0 +1,34 @@
+<form *ngIf="formGroup" class="form" [formGroup]="formGroup" novalidate>
+    <div class="title-l">Especialista</div>
+
+    <e-input desc="Nombres" formControlName="nombres"></e-input>
+    <e-input desc="Apellidos" formControlName="apellidos"></e-input>
+    <e-input desc="DNI" formControlName="dni"></e-input>
+
+    <e-select desc="Especialidad" formControlName="id_especialidad" [data]="especialidades" key="id" display="nombre" [default]="0">
+    </e-select>
+
+    <e-select desc="Sucursal" formControlName="id_sucursal" [data]="sucursales" key="id" display="nombre" [default]="0">
+    </e-select>
+
+
+    <div class="title-l">Turnos</div>
+
+    <div class="horarios" formArrayName="horarios">
+        <e-button desc="Agregar Nuevo Horario" (click)="agregarHorario()"></e-button>
+        <div class="horario" *ngFor="let horario of horarios.controls;let i =index"
+            [formGroup]="parseFormGroup(horario)">
+            <e-input formControlName="inicio" type="time"></e-input>
+            <e-input formControlName="fin" type="time"></e-input>
+            <e-button desc="X" (click)="eliminarHorario(i,horario)"></e-button>
+        </div>
+    </div>
+
+
+
+
+    <div class="actions-r">
+        <e-button [enable]="formGroup.valid && horarios.length>=6" desc="Aceptar" (click)="save()"></e-button>
+        <e-button routerLink="/admin/especialista" desc="Cancelar"></e-button>
+    </div>
+</form>
