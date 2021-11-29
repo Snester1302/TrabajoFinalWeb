@@ -1,0 +1,22 @@
+@use "/src/assets/scss/color.scss";
+@import url("https://fonts.googleapis.com/css2?family=Mukta:wght@200&display=swap");
+
+form {
+  display: grid;
+  gap: 1rem;
+  > h1 {
+    font-family: "Mukta", sans-serif;
+    color: color.$ctrl-bd;
+    text-align: center;
+  }
+
+  > a {
+    font-size: 0.9rem;
+    text-align: center;
+    color: color.$ctrl-bd;
+    &:hover,&:focus{
+      filter: invert(2);
+
+    }
+  }
+}

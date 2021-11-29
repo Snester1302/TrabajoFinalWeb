@@ -1,0 +1,13 @@
+<form *ngIf="formGroup" [formGroup]="formGroup" novalidate>
+    <h1>¡Bienvenido!</h1>
+    <e-input desc="E-mail" formControlName="email"></e-input>
+    <e-input type="password" desc="Contraseña" formControlName="contrasena"></e-input>
+
+    <ngx-recaptcha2 #captchaElem
+    siteKey="6LdChUwdAAAAAAVlFY92uiozt36eUMlsZKA99_se"
+    formControlName="captcha">
+    </ngx-recaptcha2>
+    <p></p>
+    <e-button [enable]="formGroup.valid" desc="Ingresar" (click)="login()" ></e-button>
+    <a routerLink="/auth/signup">No tienes una cuenta?</a>
+</form>
