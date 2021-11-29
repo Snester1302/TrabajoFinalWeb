@@ -1,0 +1,36 @@
+<div class="form">
+    <div class="title-l">Sucursales</div>
+    <div class="options">
+        <e-button desc="Nuevo" [routerLink]="['/admin/sucursal/form']"></e-button>
+        <e-input desc="Buscar" placeholder="Buscar..." (echange)="search($event)"></e-input>
+    </div>
+    <div *ngIf="pagination.content.length==0" class="title">No se encontraron registros <br><br></div>
+    <table *ngIf="pagination.content.length>0">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Dirección</th>
+                <th>Distrito</th>
+                <th>Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of pagination.content">
+                <td>{{item.id}}</td>
+                <td>{{item.nombre}}</td>
+                <td>{{item.direccion}}</td>
+                <td>{{item.distrito}}</td>
+                <td>
+                    <div class="actions">
+                        <div class="action a-active" [routerLink]="['/admin/sucursal/form',item.id]"><i
+                                class="fas fa-clipboard-list"></i>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <epagination [totalPages]="pagination.totalPages" [currentPage]="pagination.currentPage"
+        (pageChange)="changePage($event)"></epagination>
+</div>
