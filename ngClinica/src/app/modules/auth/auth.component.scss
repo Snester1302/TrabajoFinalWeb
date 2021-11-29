@@ -1,0 +1,61 @@
+:host {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background-color: #fffae7;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  > nav {
+    height: 4rem;
+    background-color: #fcfeff;
+    box-shadow: 0 0.3rem 0.3rem #cbebff;
+    .logo{
+      img{
+        height: 4rem;
+      }
+    }
+  }
+  > .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+    > .content {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      > .image {
+        > img {
+          object-fit: contain;
+          width: 100%;
+          height: 100%;
+        }
+      }
+      > .auth-form {
+        align-self: center;
+        box-shadow: 0 0 .5rem #89d2ff;
+        background-color: #fdfeff;
+        border-radius: 0.3rem;
+        padding: 3rem 2rem;
+      }
+    }
+  }
+}
+
+$asd: 650px;
+@media (max-width: $asd) {
+  :host {
+    > .container {
+      > .content {
+        // width: 100%;
+        grid-template-columns: 1fr;
+        > .image {
+          display: none;
+        }
+        > .auth-form {
+            width: 22rem;
+        }
+      }
+    }
+  }
+}
