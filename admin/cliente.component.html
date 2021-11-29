@@ -1,0 +1,33 @@
+<div class="form">
+    <div class="title-l">Clientes</div>
+    <div class="options">
+        <e-button desc="Nuevo" [routerLink]="['/admin/cliente/form']"></e-button>
+        <e-input desc="Buscar" placeholder="Buscar..."></e-input>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of pagination.content">
+                <td>{{item.id}}</td>
+                <td>{{item.nombre}}</td>
+                <td>{{item.descripcion}}</td>
+                <td>
+                    <div class="actions">
+                        <div class="action a-active" [routerLink]="['/admin/cliente/form',item.id]"><i
+                                class="fas fa-clipboard-list"></i>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <epagination [totalPages]="pagination.totalPages" [currentPage]="pagination.currentPage" (pageChange)="changePage($event)"></epagination>
+</div>
