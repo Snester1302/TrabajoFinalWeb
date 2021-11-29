@@ -1,0 +1,53 @@
+#/dist
+/node_modules
+
+
+
+
+# --create database clinica;
+
+# use clinica;
+
+# create table users(
+# id int primary key identity, 
+# nombre varchar(255),
+# email varchar(255),
+# clave varchar(255),
+# );
+
+
+# create table sucursal(
+# id int primary key identity,
+# descripcion varchar(255),
+# ubicacion varchar(255)
+# );
+
+# create table especialidad(
+# id int primary key identity,
+# descripcion varchar(255)
+# );
+
+# create table doctor(
+# id int primary key identity,
+# nombre varchar(255),
+# id_especialidad int references especialidad(id)
+# );
+
+
+# create procedure sp_doctor_findAll
+# as
+# begin
+# select * from doctor;
+# end;
+
+
+# select * from users;
+
+# exec sp_doctor_findAll;
+
+
+
+
+
+
+
