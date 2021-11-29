@@ -1,0 +1,107 @@
+<div class="navbar" #navbar>
+    <div class="menu-action">
+    </div>
+    <nav>
+        <div class="logo">
+            <img src="assets/images/e99cf0e3-1ed3-4a6f-8ed9-8e543fcae8e8 (1).jpg" alt="">
+        </div>
+        <ul>
+            <a href="#Inicio">Inicio</a>
+            <a href="#Nosotros">Nosotros</a>
+            <a href="#Servicio">Servicio</a>
+            <a href="#Contacto">Contacto</a>
+        </ul>
+        <div class="login" (click)="redirect()">
+            Iniciar sesion
+        </div>
+    </nav>
+</div>
+
+<div id="Inicio" class="container">
+    <div class="slider">
+        <img src="https://www.clinicainternacional.com.pe/uploads/0-banner-mesa-prona-copia.jpg" alt="">
+
+        <div class="data">
+            <h1>Cuidamos lo más importante, tu salud.</h1>
+            <!-- <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Provident ab repudiandae asperiores sequi
+                cupiditate ex perspiciatis tenetur tempora.</p>
+            <br> -->
+            <button (click)="redirect()">Registrar Cita</button>
+        </div>
+
+    </div>
+</div>
+
+
+<div id="Nosotros" class="container">
+    <div class="content">
+        <h1 class="title-01">Nosotros</h1>
+        <p class="subtitle-01">
+            La clínica Buena Salud, es una institución privada del sector de salud concebida como una Clínica de
+            servicios profesionales médicos con más de 10 años de experiencia en el cuidado y bienestar de pacientes
+            adultos y niños. Esto permite una administración descentralizada con una adecuada coordinación, la que
+            favorece el trabajo en equipos interdisciplinarios y el desarrollo de las distintas especialidades de la
+            salud. Se definen áreas según complejidad de la atención requerida y también se establecen algunos servicios
+            de especialidades, que por su complejidad requieren de espacios/zonas y profesionales de alta capacitación.
+        </p>
+
+        <div class="us-image">
+
+            <img src="https://cdn.wallpapersafari.com/86/83/MZpzVU.jpg" alt="">
+        </div>
+    </div>
+</div>
+
+<div id="Servicio" class="container">
+    <div class="content">
+        <h1 class="title-01">Servicios</h1>
+        <div class="servicios">
+            <div class="item">
+                <div class="servicio-img">
+                    <img src="https://psicologiaymundo.com/wp-content/uploads/2020/12/concentrated-doctor-working-with-virtual-screen-1.jpg"
+                        alt="">
+                </div>
+                <h3>Especialidades</h3>
+                <p>Te brindamos atencion de primer nivel en todas nuestras especvialidades.</p>
+            </div>
+
+            <div class="item">
+                <div class="servicio-img"><img
+                        src="https://hospitalmedicalcenter.mx/wp-content/uploads/2021/03/medicinageneral.jpg"
+                        alt=""></div>
+                <h3>Medicina General</h3>
+                <p>Se trata de una evaluación general y atención para el diagnóstico oportuno de las enfermedades.</p>
+            </div>
+            <div class="item">
+
+                <div>
+                    <img src="https://www.clinicasanpablo.co/fotospages/mac_hospitalizacion_1549490077.jpg"
+                        alt="">
+                </div>
+                <h3>Hospitalización.</h3>
+                <p>Tenemos espacios especializados y equipados para tu pronta recuperacion.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="Contacto" class="container contact">
+    <div class="content">
+        <h1 class="title-01">Contactanos</h1>
+        <div class="logo">
+            <img src="https://sumblex.com/wp-content/uploads/2020/08/Contactanos.png" alt="">
+        </div>
+        <div class="contact-form">
+            <e-input desc="Nombre" placeholder="Ingrese su nombre."></e-input>
+            <e-input desc="Email" placeholder="Ingrese su email."></e-input>
+            <e-textarea desc="Mensaje" placeholder="Ingrese su mensaje."></e-textarea>
+            <e-button desc="Enviar" style="justify-self: right;"></e-button>
+        </div>
+    </div>
+
+</div>
+
+
+<footer class="container">
+    <p>2021</p>
+</footer>
