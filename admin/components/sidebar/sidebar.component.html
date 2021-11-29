@@ -1,0 +1,31 @@
+<nav>
+    <ul>
+        <li *ngIf="tokenService.getUsuario()!.id_tipo_usuario==2">
+            <span routerLink="/admin">
+                <div><i class="action fas fa-home"></i></div>
+                <div class="text">Inicio</div>
+            </span>
+        </li>
+        <li *ngIf="tokenService.getUsuario()!.id_tipo_usuario==2"><span class="cbo">
+                <div><i class="action fas fa-clipboard-list"></i></div>
+                <div class="text">Citas</div>
+                <div class="action"><i class="action fas fa-angle-down"></i></div>
+            </span>
+            <ul>
+                <li><span routerLink="cita/form">Registrar Cita</span></li>
+                <li><span routerLink="cita">Resumen Cita</span></li>
+            </ul>
+        </li>
+        <li *ngIf="tokenService.getUsuario()!.id_tipo_usuario==1"><span class="cbo">
+                <div><i class="action fas fa-tools"></i></div>
+                <div class="text">Registro</div>
+                <div class="action"><i class="action fas fa-angle-down"></i></div>
+            </span>
+            <ul>
+                <li><span routerLink="sucursal">Registrar Sucursal</span></li>
+                <li><span routerLink="especialidad">Registrar Especialidad</span></li>
+                <li><span routerLink="especialista">Registrar Especialista</span></li>
+            </ul>
+        </li>
+    </ul>
+</nav>

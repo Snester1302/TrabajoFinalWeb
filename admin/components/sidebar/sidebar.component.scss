@@ -1,0 +1,132 @@
+@use "/src/assets/scss/color.scss";
+
+:host.active {
+  width: 16rem;
+}
+:host {
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: 0;
+  background: color.$sb-bg;
+  border-right: solid 1px color.$sb-bd;
+  transition: width 0.2s;
+}
+nav {
+  z-index: 10000;
+  color: color.$sb-ft;
+  padding: 1rem 1rem;
+  ul {
+    display: grid;
+    list-style: circle;
+    li {
+      min-height: 2.5rem;
+      padding-left: 0.5rem;
+      span {
+        display: grid;
+        align-items: center;
+        height: 2.5rem;
+        font-size: 1rem;
+        cursor: pointer;
+
+        grid-template-areas: "text action";
+        grid-template-columns: 1fr auto;
+
+        .text {
+          grid-area: text;
+        }
+
+        .action {
+          overflow: hidden;
+          grid-area: action;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          > .action {
+            transition: transform 0.2s;
+            transform: rotate(0deg);
+          }
+        }
+
+        &:hover {
+          color: color.$sb-subitem-ft-hv;
+        }
+      }
+
+      ul {
+        li {
+          min-height: 0;
+          overflow: hidden;
+          > span {
+            height: 0;
+          }
+        }
+      }
+    }
+
+    .cbo {
+      padding-right: 1rem;
+    }
+    .cbo-show {
+      > .action {
+        > .action {
+          transform: rotate(180deg) !important;
+        }
+      }
+      ~ ul {
+        > li {
+          min-height: 2.5rem;
+          overflow: hidden;
+          > span {
+            height: 2.5rem;
+          }
+        }
+      }
+    }
+  }
+
+  > ul {
+    list-style: none;
+    gap: 1rem;
+    > li {
+      padding-left: 0;
+      > span {
+        display: grid;
+        gap: 1rem;
+        padding: 0 1rem;
+
+        font-weight: 700;
+        border-radius: 0.5rem;
+        transition: background 0.2s, color 0.2s;
+
+        grid-template-areas: "icon text action";
+        grid-template-columns: 1rem 1fr auto;
+        .icon {
+          grid-area: icon;
+        }
+
+        &:hover {
+          background: color.$sb-item-bg-hv;
+          color: color.$sb-item-ft-hv;
+        }
+      }
+      > ul {
+        > li {
+          padding-left: 2.5rem;
+        }
+      }
+      > .cbo-show {
+        background: color.$sb-item-bg-ac !important;
+        color: color.$sb-item-ft-ac !important;
+      }
+    }
+  }
+}
+
+@media (max-width: 650px) {
+  :host {
+    position: fixed;
+    top: 6rem;
+    height: calc(100% - 6rem);
+    z-index: 10;
+  }
+}
