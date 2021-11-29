@@ -1,0 +1,12 @@
+<form *ngIf="formGroup" class="form" [formGroup]="formGroup" novalidate>
+    <div class="title-l">Especialidad</div>
+
+    <!-- <e-input desc="Id" formControlName="id"></e-input> -->
+    <e-input desc="Nombre" formControlName="nombre"></e-input>
+    <e-input desc="Descripción" formControlName="descripcion"></e-input>
+
+    <div class="actions-r">
+        <e-button desc="Aceptar" (click)="save()"></e-button>
+        <e-button desc="Cancelar" routerLink="/admin/especialidad"></e-button>
+    </div>
+</form>
