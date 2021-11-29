@@ -1,0 +1,17 @@
+<div class="user">
+    <div class="photo">
+        <img src="https://kruthaimooc.com/wp-content/uploads/2020/10/start-0e837dcc57769db2306d8d659f53555feb500b3c5d456879b9c843d1872e7baa-1.jpg"
+            alt="profile image">
+    </div>
+    <div class="data">
+        <div class="name">{{tokenService.getUsuario()!.nombres}}</div>
+        <div class="email">{{tokenService.getUsuario()!.email}}</div>
+    </div>
+    <button class="action a-active"><i class="fas fa-sort-down"></i></button>
+
+    <div class="options">
+        <div class="option" (click)="tokenService.logOut()">
+            <i class="fas fa-power-off"></i> Cerrar Sesion
+        </div>
+    </div>
+</div>

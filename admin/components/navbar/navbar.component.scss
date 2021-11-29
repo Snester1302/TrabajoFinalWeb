@@ -1,0 +1,87 @@
+@use "/src/assets/scss/color.scss";
+
+:host {
+  background: color.$nb-bg;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-areas: "none user";
+  z-index: 10;
+  height: 4rem;
+  > .user {
+    grid-area: user;
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    padding: 0.5rem;
+    gap: 0.5rem;
+    color: color.$nb-ft;
+    align-items: center;
+    position: relative;
+    > .photo,
+    > .data,
+    > .action {
+      cursor: pointer;
+      background-color: transparent;
+    }
+
+    .action:focus {
+      & ~ .options {
+        display: block;
+      }
+    }
+
+    .options {
+      display: none;
+      position: absolute;
+      right: 1rem;
+      z-index: 100;
+      top: 4rem;
+      padding: 0.5rem 1rem;
+      background-color: #f5fbff;
+      box-shadow: -0.2rem 0.2rem 0.5rem #061452;
+      border-radius: 0.5rem;
+      color: #0965dd;
+      animation: option-anim 0.1s;
+      cursor: pointer;
+      @keyframes option-anim {
+        from {
+          transform: translateY(2rem);
+        }
+        to {
+          transform: translateY(0);
+        }
+      }
+      // top: 100%;
+      &:hover {
+        display: block;
+      }
+    }
+
+    > .photo {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 0.2rem;
+      overflow: hidden;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    > .data {
+      display: grid;
+      align-content: center;
+      > .name {
+        font-size: 0.9rem;
+      }
+      > .email {
+        font-size: 0.8rem;
+      }
+    }
+    > .action {
+      display: flex;
+      width: 2rem;
+      justify-content: center;
+    }
+  }
+}
