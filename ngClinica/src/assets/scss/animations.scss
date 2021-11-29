@@ -1,0 +1,15 @@
+.a-active {
+  transition: transform 0.2s;
+  transform: scale(1);
+  cursor: pointer;
+}
+.a-active:hover {
+  transform: scale(1.3);
+}
+.a-active:active {
+  transform: scale(1);
+}
+.a-active[disabled] {
+  transform: scale(1) !important;
+  cursor: not-allowed !important;
+}

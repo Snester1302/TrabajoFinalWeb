@@ -1,0 +1,52 @@
+@use "color.scss";
+
+table {
+  border-collapse: collapse;
+  color: color.$tbl-ft;
+  // min-height: 20rem;
+  th,
+  td {
+    padding: 0.5rem;
+  }
+
+  tr {
+    border-top: solid 2px color.$tbl-bd;
+  }
+
+  .actions {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    .action {
+      cursor: pointer;
+    }
+  }
+}
+
+
+@media (max-width: 650px) {
+  table {
+    thead {
+      display: none;
+    }
+    tbody {
+      display: grid;
+    }
+
+    tr {
+      td {
+        display: grid;
+        padding: 1rem;
+        text-align: center;
+      }
+      .actions {
+        gap: 6rem;
+        .action {
+          font-size: 3rem;
+        }
+      }
+    }
+  }
+}
